@@ -2,7 +2,7 @@ import {test as baseTest} from '@playwright/test'
 import { BasePage } from '../pages/BasePage'
 import {HomePage} from "../pages/HomePage"
 import { LoginPage } from '../pages/LoginPage';
-import { Header } from '../components/header';
+import { Header } from '../components/Header';
 import { RegisterPage } from '../pages/RegisterPage';
 import { AccountPage } from '../pages/AccountPage';
 
