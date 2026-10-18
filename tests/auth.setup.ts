@@ -1,5 +1,7 @@
 import { expect } from "@playwright/test";
 import {test as setup} from "../src/fixtures/base-fixture";
+import {env} from "../src/config/env";
+import path from "path";
 
 setup("Verify login test", async function({homePage, loginPage, header, page}){
 
@@ -7,11 +9,11 @@ setup("Verify login test", async function({homePage, loginPage, header, page}){
 
         await header.clickLoginButton();
 
-        await loginPage.doLogin("abcdef2195@gmail.com", "Abcdef");
+        await loginPage.doLogin(env.testUserEmail, env.testUserPassword);
 
-        expect(await header.isAtLoginPage()).toBeTruthy()
+        expect(await header.isAtLogoutLinkVisible()).toBeTruthy()
 
-        expect(await header.getLoggedInUserEmail()).toEqual("abcdef2195@gmail.com");
+        expect(await header.getLoggedInUserEmail()).toEqual(env.testUserEmail);
 
-        await page.context().storageState({path:'../auth/user.json'})
+        await page.context().storageState({path: path.resolve(process.cwd(), "auth/user.json")})
 })

@@ -103,6 +103,12 @@ Keep actual credentials in local environment files and **never commit secrets to
 
 Ensure the environment loader and `playwright.config.ts` are configured to load the selected environment before accessing these variables.
 
+## GitHub Actions
+
+The Playwright workflow runs the dev suite on pushes and pull requests targeting `main` or `master`. It loads `BASE_URL`, `TEST_USER_EMAIL`, and `TEST_USER_PASSWORD` directly from `.env.dev`; no GitHub Actions secrets are configured. The file must be present in the checked-out repository for the workflow to run.
+
+Committing `.env.dev` makes its contents visible to anyone with repository access. Do not put real credentials in a tracked file; use GitHub Actions secrets for credentials that must remain private.
+
 ## Running Tests
 
 Run all tests:

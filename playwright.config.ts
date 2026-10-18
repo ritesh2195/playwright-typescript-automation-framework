@@ -2,7 +2,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
-import {env} from ''
 
 // Select the environment: dev, qa, or prod
 const environment = process.env.ENV ?? 'qa';
@@ -52,7 +51,7 @@ export default defineConfig({
     baseURL,
 
     trace: 'on-first-retry',
-    headless: false,
+    headless: !!process.env.CI,
     launchOptions:{
       slowMo:50
     }
@@ -67,7 +66,6 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        channel: 'chrome',
       },
     },
     {
