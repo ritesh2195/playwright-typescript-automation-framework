@@ -21,8 +21,15 @@ export class Header {
     /**
      * Click on the Log in link
      */
-    public async clickLoginButton(){
+    public async clickLoginLink(){
         await this.loginLink.click();
+    }
+
+    /**
+     * Click on the Log out link
+     */
+    public async clickLogOutLink(){
+        await this.logoutLink.click();
     }
 
     /**

@@ -8,7 +8,7 @@ test.describe("Login Test", ()=>{
 
         await homePage.launchUrl();
 
-        await header.clickLoginButton();
+        await header.clickLoginLink();
 
         await loginPage.doLogin(env.testUserEmail, env.testUserPassword);
 

@@ -6,6 +6,7 @@ test.describe("User registration test", () => {
   test("User registration with user details", async function ({
     header,
     homePage,
+    loginPage,
     registerPage,
     accountPage,
   }) {
@@ -24,5 +25,9 @@ test.describe("User registration test", () => {
       lastName: userDetails.lastName,
       gender: userDetails.gender,
     });
+    await header.clickLogOutLink();
+    await header.clickLoginLink();
+    await loginPage.doLogin(userDetails.email, userDetails.password);
+    await header.isAtLogoutLinkVisible();
   });
 });
