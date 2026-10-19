@@ -33,19 +33,18 @@ export class RegisterPage extends BasePage{
     * form has been submitted.
     */
     public async registerNewUser(userDetails: RegisterUserModel){
-        if (userDetails.gender=='Male'){
-            await this.genderMaleRadioButton.nth(0).click();
+        if (userDetails.gender==='Male'){
+            await this.genderMaleRadioButton.check();
         }
 
-        else{
-            await this.genderFemaleRadioButton.nth(0).click();
+        else if (userDetails.gender==='Female'){
+            await this.genderFemaleRadioButton.check();
         }
-        await this.firstNameInput.nth(0).click()
-        await this.firstNameInput.nth(0).fill(userDetails.firstName);
-        await this.lastNameInput.nth(0).fill(userDetails.lastName);
-        await this.emailInput.nth(0).fill(userDetails.email);
-        await this.passwordInput.nth(0).fill(userDetails.password);
-        await this.confirmPassword.nth(0).fill(userDetails.confirmPassword);
+        await this.firstNameInput.fill(userDetails.firstName);
+        await this.lastNameInput.fill(userDetails.lastName);
+        await this.emailInput.fill(userDetails.email);
+        await this.passwordInput.fill(userDetails.password);
+        await this.confirmPassword.fill(userDetails.confirmPassword);
         await this.registerButton.click();
     }
 }
