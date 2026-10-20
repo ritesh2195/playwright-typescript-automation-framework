@@ -7,15 +7,16 @@ export class Header {
     private readonly logoutLink: Locator;
     private readonly loggedInUserEmail: Locator;
     private readonly registerLink: Locator;
+    private readonly searchProductInput: Locator;
+    private readonly shoppingCartLink: Locator;
 
     constructor(private readonly page: Page){
         this.loginLink = page.getByRole('link',{name:'Log in'});
-
         this.logoutLink = page.getByRole('link',{name:'Log out'});
-
         this.registerLink = page.getByRole('link', {name:'Register'});
-
         this.loggedInUserEmail = page.locator(".header-links a[href='/customer/info']");
+        this.searchProductInput = page.locator('#small-searchterms');
+        this.shoppingCartLink = page.locator("//div[@class='header-links']//a[@class='ico-cart']")
     }
 
     /**
@@ -60,5 +61,21 @@ export class Header {
      */
     public async navigateToAccountPage(): Promise<void>{
         await this.loggedInUserEmail.click();
+    }
+
+    /**
+     * Searching product by entering product and press enter button
+     * @param product - name of product to search
+     */
+    public async searchProduct(product: string){
+        await this.searchProductInput.fill(product);
+        await this.page.keyboard.press('Enter')
+    }
+
+    /**
+     * Click on shopping cart link
+     */
+    public async clickShoppingCartLink(){
+        await this.shoppingCartLink.click();
     }
 }

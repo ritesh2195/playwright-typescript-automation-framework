@@ -5,6 +5,8 @@ import { LoginPage } from '../pages/LoginPage';
 import { Header } from '../components/Header';
 import { RegisterPage } from '../pages/RegisterPage';
 import { AccountPage } from '../pages/AccountPage';
+import { ProductListPage } from '../pages/ProductListPage';
+import { ShoppingCartPage } from '../pages/ShoppingCartPage';
 
 
 export const test = baseTest.extend<{
@@ -13,7 +15,9 @@ export const test = baseTest.extend<{
     loginPage: LoginPage,
     header: Header,
     registerPage:RegisterPage,
-    accountPage: AccountPage
+    accountPage: AccountPage,
+    productListPage: ProductListPage,
+    shoppingCartPage: ShoppingCartPage
 }>({
     basePage: async ({page}, use)=>{
         await use(new BasePage(page));
@@ -32,5 +36,11 @@ export const test = baseTest.extend<{
     },
     accountPage: async({page}, use)=>{
         await use(new AccountPage(page));
+    },
+    productListPage: async({page}, use)=>{
+        await use(new ProductListPage(page));
+    },
+    shoppingCartPage: async({page}, use)=>{
+        use(new ShoppingCartPage(page));
     }
 });
