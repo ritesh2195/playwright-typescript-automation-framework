@@ -5,7 +5,6 @@ import {env} from '../../src/config/env'
 test.describe("search product test", ()=>{
     test("valid search product", async function({
         header, 
-        page, 
         homePage,  
         loginPage,
         productListPage,
