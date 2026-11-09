@@ -1,5 +1,4 @@
-import { expect } from "@playwright/test";
-import {test} from "../../src/fixtures/base-fixture";
+import {test, expect} from "../../src/fixtures/base-fixture";
 import {env} from '../../src/config/env'
 
 test.describe("Login Test", ()=>{

@@ -1,6 +1,5 @@
-import { expect } from "@playwright/test";
-import { test } from "../../src/fixtures/base-fixture";
-import { createUserRegistrationData } from "../../src/test-data/register-user.data";
+import { test, expect } from "../../src/fixtures/base-fixture";
+import { createUserRegistrationData } from "../test-data/register-user.data"
 
 test.describe("User registration test", () => {
   test("User registration with user details", async function ({

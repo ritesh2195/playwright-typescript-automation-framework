@@ -1,4 +1,4 @@
-import {test as baseTest} from '@playwright/test'
+import {test as baseTest, expect} from '@playwright/test'
 import { BasePage } from '../pages/BasePage'
 import {HomePage} from "../pages/HomePage"
 import { LoginPage } from '../pages/LoginPage';
@@ -44,3 +44,5 @@ export const test = baseTest.extend<{
         use(new ShoppingCartPage(page));
     }
 });
+
+export {expect}
